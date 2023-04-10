@@ -164,7 +164,29 @@ SD_male
 var.test(female$Mark,male$Mark)
 
 # Q 3 B 
+data_df_filtered <- subset(data_df, select = c('Employment', 'MDT'))
+non_employed <- data_df_filtered[data_df_filtered$Employment == 0,]
+non_employed
+summary(non_employed$MDT)
+nrow(non_employed)
 
+employed <- data_df_filtered[data_df_filtered$Employment != 0,]
+employed
+summary(employed$MDT)
+nrow(employed)
+
+  #F statistic 
+SD_non_employed <- sd(non_employed$MDT)
+SD_employed <- sd(employed$MDT)
+
+
+
+#larger SD
+SD_employed
+#Smaller SD
+SD_non_employed
+
+var.test(employed$MDT,non_employed$MDT)
 
 # Q 3 C
 data_df_filtered <- subset(data_df, select = c('Anxiety', 'Mark'))
