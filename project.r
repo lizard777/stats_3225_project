@@ -8,7 +8,7 @@ data <- file
 
 # QUESTION 1 #
 
-data <- as.data.frame(read_excel("Project_Data.xlsx"))
+data <- as.data.frame(read_excel("S3225_Project_Data.xlsx"))
 
 # Column D
 Program <- data$Program
@@ -134,10 +134,39 @@ ggplot(comp_anx_df, aes(x = comp, y = comp_anx)) +
 summary(file)
 
 
+#Q 3
 data_df <- data.frame(file)
 
 data_df
 
+#Q 3 A
+data_df_filtered <- subset(data_df, select = c('Gender', 'Mark'))
+
+male <- data_df_filtered[data_df_filtered$Gender == 1,]
+male
+summary(male$Mark)
+nrow(male)
+
+female <- data_df_filtered[data_df_filtered$Gender == 2,]
+female
+summary(female$Mark)
+nrow(female)
+
+  #F statistic 
+SD_female <- sd(female$Mark)
+SD_male <- sd(male$Mark)
+
+#larger SD
+SD_female
+#Smaller SD
+SD_male
+
+var.test(female$Mark,male$Mark)
+
+# Q 3 B 
+
+
+# Q 3 C
 data_df_filtered <- subset(data_df, select = c('Anxiety', 'Mark'))
 
 data_df_filtered
@@ -160,7 +189,6 @@ qqnorm(withAnxiety_mark$Mark)
 #we need the number of students with math anxiety
 #and the number of students without math anxiety 
 #although anxiety is a categorical variable
-
 
 
 SD_withMathAnxiety <- sd(withAnxiety_mark$Mark)
