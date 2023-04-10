@@ -163,6 +163,8 @@ SD_male
 
 var.test(female$Mark,male$Mark)
 
+t.test(female$Mark,male$Mark, alternative = "two.sided" ,var.equal = TRUE)
+
 # Q 3 B 
 data_df_filtered <- subset(data_df, select = c('Employment', 'MDT'))
 non_employed <- data_df_filtered[data_df_filtered$Employment == 0,]
@@ -187,6 +189,8 @@ SD_employed
 SD_non_employed
 
 var.test(employed$MDT,non_employed$MDT)
+t.test(employed$MDT,non_employed$MDT, alternative = "two.sided" ,var.equal = TRUE)
+
 
 # Q 3 C
 data_df_filtered <- subset(data_df, select = c('Anxiety', 'Mark'))
@@ -226,7 +230,37 @@ var.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark)
 #the p value is larger than alpha, therefore we cannot reject H0, meaning that the two standard deviatations show no differenc
 
 #therefore have to do a pooled T test 
-t.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark, var.equal = TRUE)
+t.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark,mu = 0.2, var.equal = TRUE)
+
+
+# Q 3 D
+
+
+
+
+#Q 3 E 
+data_df_filtered <- subset(data_df, select = c('Mark','MDT'))
+pass <- data_df_filtered[data_df_filtered$MDT > 24,]
+pass
+summary(pass$MDT)
+nrow(pass)
+
+fail <- data_df_filtered[data_df_filtered$MDT < 25,]
+fail
+summary(fail$MDT)
+nrow(fail)
+
+  #F statistic 
+
+#larger
+SD_pass <- sd(pass$Mark)
+SD_pass
+#smaller
+SD_fail <- sd(fail$Mark)
+SD_fail
+
+var.test(pass$Mark,fail$Mark)
+t.test(pass$Mark,fail$Mark, alternative = "two.sided" ,var.equal = TRUE)
 
 
 
