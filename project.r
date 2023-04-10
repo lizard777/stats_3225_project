@@ -87,7 +87,6 @@ ggplot(gen_emp_df, aes(x = gender, y = employed)) +
   ylab("Number of Employed Students") +
   ggtitle("Number of Employed Students Among Gender")
 
-
 # Question 2B
 gen_anx_stats <- table(data$Gender, data$Anxiety)
 gen_anx_stats
@@ -100,7 +99,6 @@ ggplot(gen_anx_df, aes(x = gender, y = anx)) +
   xlab("Gender") +
   ylab("Number of Students with Anxiety") +
   ggtitle("Number of Students with Anxiety Among Gender")
-
 
 # Question 2C
 uni_emp_stats <- table(data$Program, data$Employment)
@@ -115,6 +113,7 @@ pct <- round(emp_uni/sum(emp_uni)*100)
 emp_uni_labels <- paste(emp_uni_labels, pct)
 emp_uni_labels <- paste(emp_uni_labels,"%",sep="")
 pie(emp_uni, labels = emp_uni_labels, main = "Number of Employed Students Among Programs", col=rainbow(length(emp_uni_labels)))
+
 
 # Question 2D
 comp_anx_stats <- table(data$Computers, data$Anxiety)
