@@ -177,3 +177,18 @@ var.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark)
 
 #therefore have to do a pooled T test 
 t.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark, var.equal = TRUE)
+
+
+
+#Q4. Boxplots
+data_q4 <- subset(data_df, select = c('Employment', 'Mark'))
+data_q4 
+unemployed_mark <- data_q4[data_q4$Employment == 0,]
+nrow(unemployed_mark)
+part_mark <- data_q4[data_q4$Employment == 1,]
+nrow(part_mark)
+full_makr <- data_q4[data_q4$Employment == 2,]
+nrow(full_makr)
+boxplot(unemployed_mark$Mark,part_mark$Mark,full_makr$Mark)
+
+boxplot(data_q4)
