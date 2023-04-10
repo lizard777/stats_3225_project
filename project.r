@@ -166,8 +166,7 @@ var.test(female$Mark,male$Mark)
 
 t.test(female$Mark,male$Mark, alternative = "two.sided" ,var.equal = TRUE)
 
-# QUESTION 3B
-
+# Q 3 B 
 data <- file
 
 # Extract data for employed students
@@ -202,28 +201,6 @@ t.test(emp_marks, non_emp_marks, alternative = "two.sided", var.equal = TRUE)
 # Q 3 B 
 data_df_filtered <- subset(data_df, select = c('Employment', 'MDT'))
 non_employed <- data_df_filtered[data_df_filtered$Employment == 0,]
-non_employed
-summary(non_employed$MDT)
-nrow(non_employed)
-
-employed <- data_df_filtered[data_df_filtered$Employment != 0,]
-employed
-summary(employed$MDT)
-nrow(employed)
-
-  #F statistic 
-SD_non_employed <- sd(non_employed$MDT)
-SD_employed <- sd(employed$MDT)
-
-
-
-#larger SD
-SD_employed
-#Smaller SD
-SD_non_employed
-
-var.test(employed$MDT,non_employed$MDT)
-t.test(employed$MDT,non_employed$MDT, alternative = "two.sided" ,var.equal = TRUE)
 
 
 # Q 3 C
@@ -281,11 +258,8 @@ qf(0.9750,42,66) ## F-critical value = 1.709632
 
 
 t.test(MDT_English,MDT_NonEnglish) ## P-value  0.0001826
-.
+
 boxplot(MDT_English,MDT_NonEnglish, xlab=" EnglIsh Speaking vs Non-English", main = "MDT Score of Students who have Mother Language English vs Non-English", ylab = "MDT Score")
-
-
-
 
 
 #Q 3 E 
