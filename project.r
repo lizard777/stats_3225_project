@@ -234,6 +234,22 @@ t.test(withAnxiety_mark$Mark,noAnxiety_mark$Mark,mu = 0.2, var.equal = TRUE)
 
 
 # Q 3 D
+MDT_NonEnglish <- data[data["Language"]!=1,c("MDT")]
+MDT_English <- data[data["Language"]==1,c("MDT")]
+
+## Calculate n 
+length(MDT_English) ## 43
+length(MDT_NonEnglish) ## 67
+
+
+var.test(MDT_English,MDT_NonEnglish) ## 1.7429 Df = 42, 66 
+qf(0.9750,42,66) ## F-critical value = 1.709632
+
+
+t.test(MDT_English,MDT_NonEnglish) ## P-value  0.0001826
+.
+boxplot(MDT_English,MDT_NonEnglish, xlab=" EnglIsh Speaking vs Non-English", main = "MDT Score of Students who have Mother Language English vs Non-English", ylab = "MDT Score")
+
 
 
 
@@ -276,3 +292,11 @@ nrow(full_makr)
 boxplot(unemployed_mark$Mark,part_mark$Mark,full_makr$Mark)
 
 boxplot(data_q4)
+
+
+
+
+
+
+
+
