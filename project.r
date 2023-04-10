@@ -1,5 +1,6 @@
 library("readxl")
 library("ggplot2")
+library("dplyr")
 
 file <- read_excel("S3225_Project_Data.xlsx")
 file
@@ -164,6 +165,39 @@ SD_male
 var.test(female$Mark,male$Mark)
 
 t.test(female$Mark,male$Mark, alternative = "two.sided" ,var.equal = TRUE)
+
+# QUESTION 3B
+
+data <- file
+
+# Extract data for employed students
+emp_test <- filter(data, data$Employment >= 1)
+emp_test <- data.frame(emp_test$Employment, emp_test$Mark)
+
+# Extract data for unemployed students
+non_emp_test <- filter(data, data$Employment == 0)
+non_emp_test <- data.frame(non_emp_test$Employment, non_emp_test$Mark)
+
+# Confirm n1 and n2 are >= 30
+nrow(emp_test)
+nrow(non_emp_test)
+
+emp_marks <- emp_test$emp_test.Mark
+non_emp_marks <- non_emp_test$non_emp_test.Mark
+
+# QQPlot for Employed Students
+qqnorm(emp_marks, main = "Marks of Employed Student Normal Probability Plot")
+qqline(emp_marks)
+
+# QQPlot for Unemployed Students
+qqnorm(non_emp_marks, main = "Marks of Unemployed Student Normal Probability Plot")
+qqline(non_emp_marks)
+
+# F Test
+var.test(emp_marks, non_emp_marks)
+
+# Pooled T-Test
+t.test(emp_marks, non_emp_marks, alternative = "two.sided", var.equal = TRUE)
 
 # Q 3 B 
 data_df_filtered <- subset(data_df, select = c('Employment', 'MDT'))
