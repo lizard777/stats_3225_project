@@ -289,13 +289,13 @@ t.test(pass$Mark,fail$Mark, alternative = "two.sided" ,var.equal = TRUE)
 
 
 #Q4. Boxplots
-dataq4 <- subset(data_df, select = c('Employment', 'Mark'))
-dataq4 
-unemployed_mark <- data_q4[dataq4$Employment == 0,]
+data_q4 <- subset(data_df, select = c('Employment', 'Mark'))
+data_q4 
+unemployed_mark <- data_q4[data_q4$Employment == 0,]
 nrow(unemployed_mark)
-part_mark <- dataq4[dataq4$Employment == 1,]
+part_mark <- data_q4[data_q4$Employment == 1,]
 nrow(part_mark)
-full_makr <- dataq4[dataq4$Employment == 2,]
+full_makr <- data_q4[data_q4$Employment == 2,]
 nrow(full_makr)
 boxplot(unemployed_mark$Mark,part_mark$Mark,full_makr$Mark)
 
